@@ -27,4 +27,4 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::view('/admin/dashboard', 'back_end.dashboard');
+Route::view('/admin/dashboard', 'back_end.dashboard');//some changes
