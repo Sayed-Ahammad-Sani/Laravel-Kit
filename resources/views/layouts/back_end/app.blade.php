@@ -9,7 +9,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <script src="https://kit.fontawesome.com/ba2b6acfb0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
     <style>
         .app-container {
             display: none;
@@ -55,6 +55,7 @@
     <script src="{{asset('js/app.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
     <script src="{{asset('js/demo.js')}}"></script>
+    <script src="{{asset('js/scrollbar.js')}}"></script>
     <script src="{{asset('js/chart_js.js')}}"></script>
     <style>
         .app-header__logo .logo-src {
