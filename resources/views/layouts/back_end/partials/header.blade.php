@@ -33,30 +33,11 @@
     </div>
     <div class="app-header__content">
         <div class="app-header-left">
-            <div class="search-wrapper">
-                <div class="input-holder">
-                    <input type="text" class="search-input" placeholder="Type to search" />
-                    <button class="search-icon"><span></span></button>
-                </div>
-                <button class="btn-close"></button>
-            </div>
             <ul class="header-menu nav">
-                <li class="nav-item">
-                    <a href="javascript:void(0);" class="nav-link">
-                        <i class="nav-link-icon fa fa-database"> </i>
-                        Statistics
-                    </a>
-                </li>
-                <li class="btn-group nav-item">
-                    <a href="javascript:void(0);" class="nav-link">
-                        <i class="nav-link-icon fa fa-edit"></i>
-                        Projects
-                    </a>
-                </li>
                 <li class="dropdown nav-item">
                     <a href="javascript:void(0);" class="nav-link">
                         <i class="nav-link-icon fa fa-cog"></i>
-                        Settings
+                        Visit Site
                     </a>
                 </li>
             </ul>
@@ -77,13 +58,6 @@
                                     <button type="button" tabindex="0" class="dropdown-item">
                                         User Account
                                     </button>
-                                    <button type="button" tabindex="0" class="dropdown-item">
-                                        Settings
-                                    </button>
-                                    <h6 tabindex="-1" class="dropdown-header">Header</h6>
-                                    <button type="button" tabindex="0" class="dropdown-item">
-                                        Actions
-                                    </button>
                                     <div tabindex="-1" class="dropdown-divider"></div>
                                     <button type="button" tabindex="0" class="dropdown-item">
                                         Dividers
@@ -92,15 +66,18 @@
                             </div>
                         </div>
                         <div class="widget-content-left ms-3 header-user-info">
-                            <div class="widget-heading">Alina Mclourd</div>
-                            <div class="widget-subheading">VP People Manager</div>
+                            <div class="widget-heading">{{Auth::user()->name}}</div>
+                            <div class="widget-subheading">Admin</div>
                         </div>
                         <div class="widget-content-right header-user-info ms-3">
-                            <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
-                                <i class="fa text-white fa-calendar pe-1 ps-1"></i>
-                            </button>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="btn-shadow p-1 btn btn-danger btn-sm show-toastr-example">
+                                    <i class="fa-solid fa-power-off"></i>
+                                </button>
+                            </form>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
         </div>

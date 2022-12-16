@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\back_end\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.back_end.app');
+    return view('welcome');
 });
 
 Route::middleware([
@@ -27,4 +28,6 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::view('/admin/dashboard', 'back_end.dashboard');//some changes from admin
+Route::group(['as'=>'app.','prefix'=>'app','middleware'=>'auth'], function() {
+    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+}); 
