@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\back_end\DashboardController;
+use App\Http\Controllers\back_end\RoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,4 +31,5 @@ Route::middleware([
 
 Route::group(['as'=>'app.','prefix'=>'app','middleware'=>'auth'], function() {
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
+    Route::resource('roles',RoleController::class);
 }); 
