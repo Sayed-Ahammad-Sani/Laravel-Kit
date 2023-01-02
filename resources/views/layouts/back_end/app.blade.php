@@ -9,7 +9,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     @stack('style')
     <style>
         .app-container {
@@ -21,9 +21,6 @@
 </head>
 
 <body class="font-sans antialiased">
-    {{-- <div id="pre-loader">
-        <img src="{{asset('img/pre-loader.gif')}}" />
-    </div> --}}
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
 
         {{-- header --}}
@@ -52,12 +49,12 @@
         </main> --}}
     </div>
 
-    @stack('modals')
     <script src="{{asset('js/app.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
     <script src="{{asset('js/demo.js')}}"></script>
     <script src="{{asset('js/scrollbar.js')}}"></script>
     <script src="{{asset('js/chart_js.js')}}"></script>
+    @stack('script')
     <style>
         .app-header__logo .logo-src {
             height: 23px;

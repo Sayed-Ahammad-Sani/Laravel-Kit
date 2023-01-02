@@ -67,17 +67,18 @@
                         </div>
                         <div class="widget-content-left ms-3 header-user-info">
                             <div class="widget-heading">{{Auth::user()->name}}</div>
-                            <div class="widget-subheading">Admin</div>
+                            <div class="widget-subheading">{{Auth::user()->role->name}}</div>
                         </div>
                         <div class="widget-content-right header-user-info ms-3">
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button type="submit" class="btn-shadow p-1 btn btn-danger btn-sm show-toastr-example">
+                                <button type="submit" class="btn-shadow p-1 btn btn-danger btn-sm show-toastr-example"
+                                    title="Log Out">
                                     <i class="fa-solid fa-power-off"></i>
                                 </button>
                             </form>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
