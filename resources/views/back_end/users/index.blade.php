@@ -28,17 +28,17 @@
     <div class="page-title-wrapper">
         <div class="page-title-heading">
             <div class="page-title-icon">
-                <i class="fa-solid fa-fingerprint icon-gradient bg-mean-fruit"> </i>
+                <i class="fa-solid fa-users icon-gradient bg-mean-fruit"> </i>
             </div>
             <div>
-                Roles
+                Users
             </div>
         </div>
         <div class="page-title-actions">
-            <a href="{{route('app.roles.create')}}" title="Create New Role For User"
+            <a href="{{route('app.users.create')}}" title="Create New Role For User"
                 class="btn-shadow me-3 btn btn-primary">
                 <i class="fa-solid fa-circle-plus"></i>
-                Create Roles
+                Create Users
             </a>
         </div>
     </div>
@@ -52,32 +52,59 @@
                     <thead>
                         <tr>
                             <th class="text-center">SL No.</th>
-                            <th class="text-center">Name</th>
-                            <th class="text-center">Permissions</th>
-                            <th class="text-center">Updated At</th>
+                            <th>Name</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Added Date</th>
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($roles as $key => $role)
+                        @foreach($users as $key => $user)
                         <tr>
                             <td class="text-center text-muted">{{$key+1}}</td>
-                            <td class="text-center">{{$role->name}}</td>
+                            <td>
+                                <div class="widget-content p-0">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left me-3">
+                                            <div class="widget-content-left">
+                                                <img width="40" height="40" class="rounded-circle"
+                                                    src="{{$user->getFirstMediaUrl('photo')!= null ? $user->getFirstMediaUrl('photo') : $user->profile_photo_url}}"
+                                                    alt="{{$user->name}} Prifile Photo">
+                                            </div>
+                                        </div>
+                                        <div class="widget-content-left flex2">
+                                            <div class="widget-heading">{{ $user->name }}</div>
+                                            <div class="widget-subheading opacity-7">
+                                                @if ($user->role)
+                                                <span class="badge bg-info">{{$user->role->name}}</span>
+                                                @else
+                                                <span class="badge bg-danger">No Role Found!</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">{{$user->email}}</td>
                             <td class="text-center">
-                                @if($role->permissions->count() > 0)
-                                <span class="badge bg-info">{{$role->permissions->count()}}</span>
+                                @if ($user->status == true)
+                                <span class="badge bg-info">Active</span>
                                 @else
-                                <span class="badge bg-warning">No Permission Found!</span>
+                                <span class="badge bg-danger">Inactive</span>
                                 @endif
                             </td>
-                            <td class="text-center">{{$role->updated_at->diffForHumans()}}</td>
+                            <td class="text-center">{{$user->created_at->diffForHumans()}}</td>
                             <td class="text-center">
-                                <a href="{{route('app.roles.edit',$role->id)}}" class="btn btn-primary btn-sm">
+                                <a href="{{route('app.users.show',$user->id)}}" class="btn btn-primary btn-sm">
+                                    <i class="fa-regular fa-eye"></i>
+                                    Show
+                                </a>
+                                <a href="{{route('app.users.edit',$user->id)}}" class="btn btn-primary btn-sm">
                                     <i class="fa-regular fa-pen-to-square"></i>
                                     Edit
                                 </a>
-                                @if ($role->deletable == true)
-                                <form action="{{route('app.roles.destroy',$role->id)}}" method="post" class="d-inline">
+                                <form action="{{route('app.users.destroy',$user->id)}}" method="post" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger btn-sm"
@@ -86,7 +113,6 @@
                                         Delete
                                     </button>
                                 </form>
-                                @endif
                             </td>
                         </tr>
                         @endforeach

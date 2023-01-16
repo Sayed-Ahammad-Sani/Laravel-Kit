@@ -4,7 +4,7 @@
     <div class="page-title-wrapper">
         <div class="page-title-heading">
             <div class="page-title-icon">
-                <i class="pe-7s-car icon-gradient bg-mean-fruit"> </i>
+                <i class="fa-solid fa-server icon-gradient bg-mean-fruit"> </i>
             </div>
             <div>
                 @role('admin')

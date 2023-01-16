@@ -38,9 +38,7 @@
 
                 {{-- footer --}}
                 @include('layouts.back_end.partials.footer')
-
             </div>
-            <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
         </div>
 
         <!-- Page Content -->
@@ -49,6 +47,7 @@
         </main> --}}
     </div>
 
+    @livewireScripts
     <script src="{{asset('js/app.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
     <script src="{{asset('js/demo.js')}}"></script>
@@ -63,8 +62,15 @@
             background-size: contain;
             background-repeat: no-repeat;
         }
+
+        .app-sidebar .scrollbar-sidebar {
+            overflow-y: auto;
+        }
+
+        .dropify-wrapper .dropify-message p {
+            font-size: initial;
+        }
     </style>
-    @livewireScripts
 </body>
 
 </html>

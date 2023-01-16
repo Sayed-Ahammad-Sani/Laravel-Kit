@@ -49,7 +49,8 @@
                         <div class="widget-content-left">
                             <div class="btn-group">
                                 <a data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                    <img width="42" class="rounded-circle" src="{{asset('img/avatars/1.jpg')}}"
+                                    <img width="42" height="42" class="rounded-circle"
+                                        src="{{Auth::user()->getFirstMediaUrl('photo') != null ? Auth::user()->getFirstMediaUrl('photo') : $user->profile_photo_url}}"
                                         alt="" />
                                     <i class="fa fa-angle-down ms-2 opacity-8"></i>
                                 </a>

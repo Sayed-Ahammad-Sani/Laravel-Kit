@@ -5,17 +5,14 @@
     <div class="page-title-wrapper">
         <div class="page-title-heading">
             <div class="page-title-icon">
-                <i class="fa-solid fa-server icon-gradient bg-mean-fruit"> </i>
+                <i class="fa-solid fa-fingerprint icon-gradient bg-mean-fruit"> </i>
             </div>
-            <div>
-                Create Roles
-            </div>
+            <div>{{isset($role)?'Edit':'Create'}} Role</div>
         </div>
         <div class="page-title-actions">
-            <a href="{{route('app.roles.create')}}" title="Create New Role For User"
-                class="btn-shadow me-3 btn btn-primary">
-                <i class="fa-solid fa-circle-plus"></i>
-                Create Roles
+            <a href="{{route('app.roles.index')}}" title="Back To List" class="btn-shadow me-3 btn btn-danger">
+                <i class="fa-solid fa-delete-left"></i>
+                Back To List
             </a>
         </div>
     </div>
@@ -31,11 +28,10 @@
                 @endisset
                 <div class="card-body">
                     <h5 class="card-title">Manage Roles</h5>
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="name">Role Name</label>
                         <input type="text" id="name" class="form-control @error('name') is-invalid @enderror"
-                            name="name" value="{{$role->name ?? old('name')}}" required autofocus>
-
+                            name="name" value="{{$role->name ?? old('name')}}" required>
                         @error('name')
                         <span class="invalid-feedback" role="alart">
                             <strong>{{$message}}</strong>
@@ -50,7 +46,7 @@
                         </span>
                         @enderror
                     </div>
-                    <div class="form-group my-2">
+                    <div class="mb-3 my-2">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="select-all">
                             <label for="select-all" class="custom-control-label">Select All</label>
@@ -99,8 +95,9 @@
 @endsection
 
 @push('script')
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="{{asset('js/jquery-3.5.1.js')}}"></script>
 <script>
+    document.getElementById("name").focus();
     // Listen for click on toggle checkbox
     $('#select-all').click(function (event) {
         if (this.checked) {
