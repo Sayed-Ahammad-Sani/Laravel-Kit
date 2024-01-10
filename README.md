@@ -63,4 +63,4 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). -->
 
-<p>This is a Laravel Starter application, which has a default Jetstream authentication system with roles and permission systems included. Sayed Ahammad Sani developed this system for all the Laravel developers to make their applications more controllable and easy to build new projects.</p>
+<p>This is a Laravel Kit application, which has a default Jetstream authentication system with roles and permission systems included. Sayed Ahammad Sani developed this system for all the Laravel developers to make their applications more controllable and easy to build new projects.</p>
