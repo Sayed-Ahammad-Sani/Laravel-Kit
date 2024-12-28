@@ -21,13 +21,17 @@ class User extends Authenticatable implements HasMedia
     use TwoFactorAuthenticatable;
     use InteractsWithMedia;
 
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
@@ -39,7 +43,7 @@ class User extends Authenticatable implements HasMedia
     /**
      * The attributes that should be cast.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
@@ -48,26 +52,25 @@ class User extends Authenticatable implements HasMedia
     /**
      * The accessors to append to the model's array form.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $appends = [
         'profile_photo_url',
     ];
 
-
-    // Create Media Collection function
-    public function registerMediaCollections(): void
-    {
-        $this->addMediaCollection('photo')->singleFile();
-    }
-
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
-
-    public function hasPermission($permission): bool
-    {
-        return $this->role->permissions()->where('slug', $permission)->first() ? true : false;
-    }
+     // Create Media Collection function
+     public function registerMediaCollections(): void
+     {
+         $this->addMediaCollection('photo')->singleFile();
+     }
+ 
+     public function role()
+     {
+         return $this->belongsTo(Role::class);
+     }
+ 
+     public function hasPermission($permission): bool
+     {
+         return $this->role->permissions()->where('slug', $permission)->first() ? true : false;
+     }
 }
