@@ -51,7 +51,7 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'role' => 'required',
             'password' => 'required|confirmed|string|min:8',
-            'photo' => 'image',
+            'photo' => 'image|mimes:jpg,jpeg,png|max:2048', // Optional: Add size and format restrictions
         ]);
         $user = User::create([
             'role_id' => $request->role,
