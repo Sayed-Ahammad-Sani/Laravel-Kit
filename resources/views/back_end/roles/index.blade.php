@@ -29,7 +29,7 @@
             <div
                 class="rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
 
-                <x-sessionMessage></x-sessionMessage>
+                <x-session-message></x-session-message>
 
                 <div class="text-right mb-2">
                     <a href="{{route('app.roles.create')}}"
